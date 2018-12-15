@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -29,7 +29,7 @@ class Branch extends Model
      */
     public function department()
     {
-        return $this->belongsTo('App\Department');
+        return $this->belongsTo(Department::class);
     }
 
     /**
@@ -37,7 +37,7 @@ class Branch extends Model
      */
     public function user()
     {
-        return $this->belongsTo('App\User');
+        return $this->belongsTo(User::class);
     }
 
     /**
@@ -45,7 +45,7 @@ class Branch extends Model
      */
     public function modules()
     {
-        return $this->hasMany('App\Module');
+        return $this->hasMany(Module::class);
     }
 
     /**
@@ -53,6 +53,6 @@ class Branch extends Model
      */
     public function students()
     {
-        return $this->hasMany('App\Student');
+        return $this->hasMany(Student::class);
     }
 }

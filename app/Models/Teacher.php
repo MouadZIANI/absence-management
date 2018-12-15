@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -28,6 +28,6 @@ class Teacher extends Model
      */
     public function department()
     {
-        return $this->belongsTo('App\Department');
+        return $this->belongsTo(Department::class);
     }
 }

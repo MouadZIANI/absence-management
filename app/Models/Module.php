@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -27,7 +27,7 @@ class Module extends Model
      */
     public function branch()
     {
-        return $this->belongsTo('App\Branch');
+        return $this->belongsTo(Branch::class);
     }
 
     /**
@@ -35,7 +35,7 @@ class Module extends Model
      */
     public function absenceDetails()
     {
-        return $this->hasMany('App\AbsenceDetail');
+        return $this->hasMany(AbsenceDetail::class);
     }
 
     /**
@@ -43,6 +43,6 @@ class Module extends Model
      */
     public function moduleItems()
     {
-        return $this->hasMany('App\ModuleItem');
+        return $this->hasMany(ModuleItem::class);
     }
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -31,7 +31,7 @@ class AbsenceDetail extends Model
      */
     public function absence()
     {
-        return $this->belongsTo(App\Absence::class);
+        return $this->belongsTo(Absence::class);
     }
 
     /**
@@ -39,7 +39,7 @@ class AbsenceDetail extends Model
      */
     public function module()
     {
-        return $this->belongsTo(App\Module::class);
+        return $this->belongsTo(Module::class);
     }
 
     /**
@@ -47,6 +47,6 @@ class AbsenceDetail extends Model
      */
     public function student()
     {
-        return $this->belongsTo(App\Student::class);
+        return $this->belongsTo(Student::class);
     }
 }

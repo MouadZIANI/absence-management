@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -25,6 +25,6 @@ class Absence extends Model
      */
     public function absenceDetails()
     {
-        return $this->hasMany(App\AbsenceDetail::class);
+        return $this->hasMany(AbsenceDetail::class);
     }
 }
