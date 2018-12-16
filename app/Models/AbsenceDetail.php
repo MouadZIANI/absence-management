@@ -31,7 +31,7 @@ class AbsenceDetail extends Model
      */
     public function absence()
     {
-        return $this->belongsTo(Absence::class);
+        return $this->belongsTo(Absence::class, 'absence_id');
     }
 
     /**
@@ -39,7 +39,7 @@ class AbsenceDetail extends Model
      */
     public function module()
     {
-        return $this->belongsTo(Module::class);
+        return $this->belongsTo(Module::class, 'module_id');
     }
 
     /**
@@ -47,6 +47,6 @@ class AbsenceDetail extends Model
      */
     public function student()
     {
-        return $this->belongsTo(Student::class);
+        return $this->belongsTo(Student::class, 'student_id');
     }
 }

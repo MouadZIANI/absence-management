@@ -47,16 +47,40 @@ class DatabaseSeeder extends Seeder
 	        }        	
         }
 
+        for ($j=1; $j <= 20; $j++) { 
+            DB::table('modules')->insert([
+                'branch_id' => rand(1, 20), 
+                'name' => "module - $i", 
+                'description' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
+            ]);
+        }
+
         // Insert students
-		for ($j=1; $j <= 50; $j++) { 
-			DB::table('students')->insert([
-	    		'group_id' => rand(1, 20), 
-	    		'branch_id' => rand(1, 20), 
-	    		'first_name' => 'Taylor ' . $i, 
-	    		'last_name' => 'Atwell ' . $i, 
-	    		'email' => 'taylor' . $i . '@atwell.com', 
-	    		'tel' => '012345679'
-	    	]);
-		}	        	
+        for ($j=1; $j <= 50; $j++) { 
+            DB::table('students')->insert([
+                'group_id' => rand(1, 20), 
+                'branch_id' => rand(1, 20), 
+                'first_name' => 'Taylor ' . $i, 
+                'last_name' => 'Atwell ' . $i, 
+                'email' => 'taylor' . $i . '@atwell.com', 
+                'tel' => '012345679'
+            ]);
+
+            // Insert absences
+            for ($i=1; $i < 10; $i++) { 
+                DB::table('absences')->insert([
+                    'type' => "Absence type $i", 
+                    'justification' => "Lorem ipsum dolor sit amet. $i", 
+                    'nb_hours' => rand(1, 5)                
+                ]);
+
+                DB::table('absence_details')->insert([
+                    'module_id' => rand(1, 20), 
+                    'student_id' => $j, 
+                    'absence_id' => $i,                
+                    'absence_date' => '2018-12-16 18:24:17',                
+                ]);                
+            }
+        }
     }
 }

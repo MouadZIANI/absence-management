@@ -7,7 +7,7 @@
 @include('layouts.partials._messages')
 
 <div class="row">
-	<div class="col-lg-4">
+	<div class="col-lg-3">
 		<div class="card card-profile">
 			<div class="card-header" style="background-color: #333"></div>
 			<div class="card-body text-center">
@@ -24,11 +24,11 @@
 				</p>
 			</div>
 			<div class="card-footer">
-				<a class="btn btn-outline-success btn-block" href="{{ route('student.edit', $student->id) }}" class="btn btn-success btn-sm">Editer les informations de l'etudiant</a>
+				<a class="btn btn-outline-success btn-block" href="{{ route('student.edit', $student->id) }}" class="btn btn-success btn-sm">Editer les infos de l'etudiant</a>
 			</div>	
 		</div>
 	</div>
-	<div class="col-lg-8">
+	<div class="col-lg-9">
 		<div class="card">
 			<div class="card-header">
 				<h3 class="card-title">Absences de l'etudiant</h3>
@@ -37,15 +37,35 @@
 				<table class="table card-table table-vcenter text-nowrap">
 					<thead>
 						<tr>
-							<th class="w-1">No.</th>
-							<th>Nom</th>
-							<th>Email</th>
-							<th>Tel</th>
-							<th>Filiere</th>
-							<th>Groupe</th>
+							<th>Date d'absence</th>
+							<th>Module</th>
+							<th>Type</th>
+							<th>Justification</th>
+							<th>Nbr heurs</th>
 							<th>Actions</th>
 						</tr>
 					</thead>
+					<tbody>
+						@foreach ($absences as $absence)
+							<tr>
+								<td>{{ dateTimeToFrFormat($absence->absence_date) }}</td>
+								<td>{{ $absence->module->name }}</td>
+								<td>{{ $absence->absence->type }}</td>
+								<td>{{ $absence->absence->justification }}</td>
+								<td><span class="badge badge-default">{{ $absence->absence->nb_hours }} Heure</span></td>
+								<td>
+									<a href="{{ route('student.edit', $student->id) }}" class="btn btn-success btn-sm">
+										Editer
+									</a>
+									<form method="post" style="display: inline-block;" action="{{ route('student.destroy', $student->id) }}">
+										@csrf
+										@method('delete')
+										<button type="submit" class="btn btn-danger btn-sm">Supprimer</button>
+									</form>
+								</td>
+							</tr>
+						@endforeach
+					</tbody>
 				</table>
 			</div>
 			<div class="card-footer">
