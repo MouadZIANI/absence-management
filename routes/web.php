@@ -20,6 +20,10 @@ Route::get('/all-sessions', function () {
 	return dump(Session::all());
 });
 
+Route::get('/test-assets', function () {
+	return view('students.index');
+});
+
 // Default route for authentifiction based on User model
 Auth::routes();
 
