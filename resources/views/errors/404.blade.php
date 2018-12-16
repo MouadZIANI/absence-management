@@ -1,22 +1,12 @@
-@extends('layouts.front')
+@extends('layouts.master-default')
 
 @section('content')
-<div class="flex-center position-ref full-height">
-    @if (Route::has('login'))
-        <div class="top-right links">
-            @auth
-                <a href="{{ url('/') }}">Home</a>
-            @else
-                <a href="{{ route('login') }}">Login</a>
-                <a href="{{ route('register') }}">Register</a>
-            @endauth
-        </div>
-    @endif
-
-    <div class="content">
-        <div class="title m-b-md">
-            BIKE 404
-        </div> 
+    <div class="container text-center">
+      <div class="display-1 text-muted mb-5"><i class="si si-exclamation"></i> 404</div>
+      <h1 class="h2 mb-3">Oops.. You just found an error page...</h1>
+      <p class="h4 text-muted font-weight-normal mb-7">We are sorry but our service is currently not available&hellip;</p>
+      <a class="btn btn-primary" href="javascript:history.back()">
+        <i class="fe fe-arrow-left mr-2"></i>Go back
+      </a>
     </div>
-</div>
 @endsection
