@@ -1,3 +1,7 @@
 .list-group-transparent .list-group-item {
     border-bottom: 1px solid rgba(0, 40, 100, 0.12);
 }
+
+.card-profile .card-header {
+    height: 7rem;
+}

@@ -18,7 +18,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Absences managment') }}</title>
+    <title>@yield('title') | Absences managment</title>
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300i,400,400i,500,500i,600,600i,700,700i&amp;subset=latin-ext">
@@ -32,39 +32,13 @@
     <div class="page">
       <div class="page-main">
         @include('layouts.partials._nav-top')
+        @include('layouts.partials._nav-bottom')
         <div class="my-3 my-md-5">
             <div class="container">
               <div class="page-header">
-                <h1 class="page-title"> @yield('page-title') </h1>
+                @yield('page-title')
               </div>
-              <div class="row">
-                <div class="col-lg-3 mb-4">
-                  <div class="card">
-                    <div class="card-status card-status-left bg-blue"></div>
-                    <div class="card-body p-0">
-                      <!-- Getting started -->
-                      <div class="list-group list-group-transparent mb-0">
-                        <a href="../docs/index.html" class="list-group-item list-group-item-action active"><span class="icon mr-3"><i class="fe fe-flag"></i></span>Introduction</a>
-                      </div>
-                      <!-- Components -->
-                      <div class="list-group list-group-transparent mb-0">
-                        <a href="../docs/alerts.html" class="list-group-item list-group-item-action"><span class="icon mr-3"><i class="fe fe-alert-triangle"></i></span>Alerts</a>
-                        <a href="../docs/avatars.html" class="list-group-item list-group-item-action"><span class="icon mr-3"><i class="fe fe-user"></i></span>Avatars</a>
-                        <a href="../docs/buttons.html" class="list-group-item list-group-item-action"><span class="icon mr-3"><i class="fe fe-plus-square"></i></span>Buttons</a>
-                        <a href="../docs/colors.html" class="list-group-item list-group-item-action"><span class="icon mr-3"><i class="fe fe-feather"></i></span>Colors</a>
-                        <a href="../docs/cards.html" class="list-group-item list-group-item-action"><span class="icon mr-3"><i class="fe fe-image"></i></span>Cards</a>
-                        <a href="../docs/charts.html" class="list-group-item list-group-item-action"><span class="icon mr-3"><i class="fe fe-pie-chart"></i></span>Charts</a>
-                        <a href="../docs/form-components.html" class="list-group-item list-group-item-action"><span class="icon mr-3"><i class="fe fe-check-square"></i></span>Form components</a>
-                        <a href="../docs/tags.html" class="list-group-item list-group-item-action"><span class="icon mr-3"><i class="fe fe-tag"></i></span>Tags</a>
-                        <a href="../docs/typography.html" class="list-group-item list-group-item-action"><span class="icon mr-3"><i class="fe fe-type"></i></span>Typography</a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-lg-9">
-                  @yield('content')
-                </div>
-              </div>
+              @yield('content')
             </div>
         </div>
       </div>
@@ -72,7 +46,7 @@
     </div>
     {{-- Scripts --}}
     <script src="{{ asset('assets/js/require.min.js') }}"></script>
-    <script> requirejs.config({ baseUrl: '.' }); </script>
+    <script> requirejs.config({ baseUrl: '{{ url('/') }}' }); </script>
     <script src="{{ asset('assets/js/dashboard.js') }}"></script>
     <!-- Plugins -->
     <script src="{{ asset('assets/plugins/input-mask/plugin.js') }}"></script>

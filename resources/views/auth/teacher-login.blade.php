@@ -1,4 +1,4 @@
-@extends('layouts.master-auth')
+@extends('layouts.master-default')
 
 @section('content')
   <div class="page-single">

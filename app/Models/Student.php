@@ -48,4 +48,12 @@ class Student extends Model
     {
         return $this->hasMany(AbsenceDetail::class);
     }
+
+    /**
+     * get full name of customer
+     */
+    public function getFullNameAttribute()
+    {
+        return $this->first_name . ' ' . $this->last_name;
+    }
 }

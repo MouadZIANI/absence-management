@@ -34,3 +34,6 @@ Route::prefix('teacher')->group(function() {
     Route::post('/login','Auth\TeacherLoginController@login')->name('teacher.login.submit');
     Route::get('/logout','Auth\TeacherLoginController@logout')->name('teacher.logout');
 });
+
+Route::resource('student', 'StudentController');
+
