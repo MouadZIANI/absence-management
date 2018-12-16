@@ -3,6 +3,8 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Notifications\Notifiable;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
 /**
  * @property int $id
@@ -16,8 +18,11 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $updated_at
  * @property Department $department
  */
-class Teacher extends Model
+class Teacher extends Authenticatable
 {
+    use Notifiable;
+
+    protected $guard = 'teacher';
     /**
      * @var array
      */
