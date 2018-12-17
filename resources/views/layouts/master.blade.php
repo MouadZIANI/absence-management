@@ -39,6 +39,7 @@
                 @yield('page-title')
               </div>
               @yield('content')
+              into-branch-empty
             </div>
         </div>
       </div>

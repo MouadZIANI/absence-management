@@ -26,7 +26,7 @@ class Teacher extends Authenticatable
     /**
      * @var array
      */
-    protected $fillable = ['department_id', 'first_name', 'last_name', 'email', 'password', 'type', 'created_at', 'updated_at'];
+    protected $fillable = ['department_id', 'created_at', 'updated_at'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo

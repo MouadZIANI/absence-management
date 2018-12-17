@@ -15,9 +15,9 @@ class CreateAbsencesTable extends Migration
     {
         Schema::create('absences', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('type');
             $table->string('justification')->nullable();
             $table->integer('nb_hours')->default(0);
+            $table->string('type')->nullable();
             $table->timestamps();
         });
     }
