@@ -19,10 +19,10 @@
             </div>
           </li>
           <li class="nav-item">
-            <a href="javascript:void(0)" class="nav-link" data-toggle="dropdown"><i class="fe fe-box"></i> Enseignants</a>
+            <a href="javascript:void(0)" class="nav-link" data-toggle="dropdown"><i class="fe fe-box"></i> Modules</a>
             <div class="dropdown-menu dropdown-menu-arrow">
-              <a href="{{ route('student.create') }}" class="dropdown-item ">Nouveau Enseignant</a>
-              <a href="{{ route('student.index') }}" class="dropdown-item ">Liste des enseignants</a>
+              <a href="{{ route('module.create') }}" class="dropdown-item ">Nouveau module</a>
+              <a href="{{ route('module.index') }}" class="dropdown-item ">Liste des modules</a>
             </div>
           </li>
           <li class="nav-item">

@@ -93,6 +93,6 @@ class ModuleController extends Controller
     {
         $module->delete();
         Session::flash('success', 'Le module a été supprimé avec succès!');
-        return redirect()->route('modules.index');
+        return redirect()->route('module.index');
     }
 }

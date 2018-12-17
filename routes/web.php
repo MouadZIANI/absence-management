@@ -35,6 +35,8 @@ Route::prefix('teacher')->group(function() {
     Route::get('/logout','Auth\TeacherLoginController@logout')->name('teacher.logout');
 });
 
-Route::resource('student', 'StudentController');
-Route::resource('module', 'ModuleController');
+Route::group(['middleware' => 'auth'], function() {
+	Route::resource('student', 'StudentController');
+	Route::resource('module', 'ModuleController');
+});
 
