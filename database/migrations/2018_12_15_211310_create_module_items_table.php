@@ -18,7 +18,7 @@ class CreateModuleItemsTable extends Migration
             $table->string('name');
             $table->string('description');
             $table->integer('module_id')->unsigned();
-            $table->foreign('module_id')->references('id')->on('modules');
+            $table->foreign('module_id')->references('id')->on('modules')->onDelete('cascade');
             $table->timestamps();
         });
     }

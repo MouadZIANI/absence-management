@@ -21,7 +21,7 @@ class CreateTeachersTable extends Migration
             $table->string('password');
             $table->string('type')->nullable();
             $table->integer('department_id')->unsigned();
-            $table->foreign('department_id')->references('id')->on('departments');
+            $table->foreign('department_id')->references('id')->on('departments')->onDelete('cascade');
             $table->timestamps();
         });
     }

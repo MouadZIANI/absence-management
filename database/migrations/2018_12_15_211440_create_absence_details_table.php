@@ -15,11 +15,11 @@ class CreateAbsenceDetailsTable extends Migration
     {
         Schema::create('absence_details', function (Blueprint $table) {
             $table->integer('module_id')->unsigned();
-            $table->foreign('module_id')->references('id')->on('modules');
+            $table->foreign('module_id')->references('id')->on('modules')->onDelete('cascade');
             $table->integer('student_id')->unsigned();
-            $table->foreign('student_id')->references('id')->on('students');
+            $table->foreign('student_id')->references('id')->on('students')->onDelete('cascade');
             $table->integer('absence_id')->unsigned();
-            $table->foreign('absence_id')->references('id')->on('absences');
+            $table->foreign('absence_id')->references('id')->on('absences')->onDelete('cascade');
             $table->timestamps();
             $table->primary(array('module_id', 'student_id', 'absence_id'));
         });
