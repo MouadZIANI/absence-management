@@ -36,4 +36,5 @@ Route::prefix('teacher')->group(function() {
 });
 
 Route::resource('student', 'StudentController');
+Route::resource('module', 'ModuleController');
 

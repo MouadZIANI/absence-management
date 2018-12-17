@@ -50,6 +50,7 @@
     <script src="{{ asset('assets/js/dashboard.js') }}"></script>
     <!-- Plugins -->
     <script src="{{ asset('assets/plugins/input-mask/plugin.js') }}"></script>
+    <script src="{{ asset('assets/js/vendors/jquery-3.2.1.min.js') }}"></script>
     <!-- Custom js -->
     @yield('scriptes')
   </body>

@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Branch;
+use App\Models\Module;
+use App\Models\ModuleItem;
+use Session;
 
 class ModuleController extends Controller
 {
@@ -13,7 +17,8 @@ class ModuleController extends Controller
      */
     public function index()
     {
-        //
+        $modules = Module::paginate(10);
+        return view('modules.index', compact('modules'));
     }
 
     /**
@@ -23,7 +28,8 @@ class ModuleController extends Controller
      */
     public function create()
     {
-        //
+        $branches = Branch::all();
+        return view('modules.create', compact('branches'));
     }
 
     /**
@@ -34,18 +40,24 @@ class ModuleController extends Controller
      */
     public function store(Request $request)
     {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
+        /* validate the data */
+        $this->validate($request , array(
+            'name' => 'required|string|max:50',
+            'description' => 'required|string|max:50',
+        ));
+ 
+        $module = Module::create($request->only('branch_id', 'name', 'description'));
+        
+        foreach ($request->name_item as $key => $item) {
+            $moduleItem = new ModuleItem();
+            $moduleItem->module_id = $module->id;
+            $moduleItem->name = $item;
+            $moduleItem->description = $request->description_item[$key];
+            $moduleItem->save();
+        }
+        
+        Session::flash('success', 'Le module a été enregistré avec succès!');
+        return redirect()->route('module.index');
     }
 
     /**
@@ -77,8 +89,10 @@ class ModuleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Module $module)
     {
-        //
+        $module->delete();
+        Session::flash('success', 'Le module a été supprimé avec succès!');
+        return redirect()->route('modules.index');
     }
 }

@@ -5,3 +5,8 @@
 .card-profile .card-header {
     height: 7rem;
 }
+
+.border-bottom-gray {
+	border-bottom: 1px solid rgba(0, 40, 100, 0.12);
+	padding-bottom: 20px;
+}
