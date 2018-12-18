@@ -7,6 +7,7 @@ use App\Models\Student;
 use App\Models\Group;
 use App\Models\Branch;
 use Session;
+use Auth;
 
 class StudentController extends Controller
 {
@@ -16,9 +17,13 @@ class StudentController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        $students = Student::paginate(10);
-        return view('students.index', compact('students'));
+    {   
+        if(Auth::user()->is_admin) {
+            $students = Student::paginate(10);
+            return view('students.index', compact('students'));
+        } else {
+            return redirect()->route('absence.index');
+        }
     }
 
     /**
@@ -28,9 +33,13 @@ class StudentController extends Controller
      */
     public function create()
     {
-        $groupes = Group::all();
-        $branches = Branch::all();
-        return view('students.create', compact('groupes', 'branches'));
+        if(Auth::user()->is_admin) {
+            $groupes = Group::all();
+            $branches = Branch::all();
+            return view('students.create', compact('groupes', 'branches'));
+        } else {
+            return abort(404);
+        }
     }
 
     /**

@@ -7,6 +7,7 @@ use App\Models\Branch;
 use App\Models\Module;
 use App\Models\ModuleItem;
 use Session;
+use Auth;
 
 class ModuleController extends Controller
 {
@@ -17,8 +18,12 @@ class ModuleController extends Controller
      */
     public function index()
     {
-        $modules = Module::paginate(10);
-        return view('modules.index', compact('modules'));
+        if(Auth::user()->is_admin) {
+            $modules = Module::latest()->paginate(10);
+            return view('modules.index', compact('modules'));
+        } else {
+            return abort(404);
+        }
     }
 
     /**
