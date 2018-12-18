@@ -27,16 +27,12 @@ Route::get('/test-assets', function () {
 // Default route for authentifiction based on User model
 Auth::routes();
 
-// Custom authentifiction with based on Teacher model
-Route::prefix('teacher')->group(function() { 
-	Route::get('/','TeacherController@index')->name('teacher');
-    Route::get('/login','Auth\TeacherLoginController@showLoginForm')->name('teacher.login');
-    Route::post('/login','Auth\TeacherLoginController@login')->name('teacher.login.submit');
-    Route::get('/logout','Auth\TeacherLoginController@logout')->name('teacher.logout');
-});
-
 Route::group(['middleware' => 'auth'], function() {
+	// Routes for students model
+	Route::get('/', 'StudentController@index');
+	Route::post('student/searche', 'StudentController@searche')->name('student.searche');
 	Route::resource('student', 'StudentController');
+
 	Route::resource('module', 'ModuleController');
 });
 

@@ -127,4 +127,19 @@ class StudentController extends Controller
         
         return redirect()->route('student.index');
     }
+
+    /**
+     * Display a listing result of searche.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function searche(Request $request)
+    {
+        $students = Student::where('first_name', $request->searched_query)
+                            ->orWhere('last_name', $request->searched_query)
+                            ->orWhere('email', $request->searched_query)
+                            ->orWhere('tel', $request->searched_query)
+                            ->get();
+        return view('students.searche', compact('students'));
+    }
 }

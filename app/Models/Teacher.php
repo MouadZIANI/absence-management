@@ -3,30 +3,22 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Notifications\Notifiable;
-use Illuminate\Foundation\Auth\User as Authenticatable;
 
 /**
  * @property int $id
  * @property int $department_id
- * @property string $first_name
- * @property string $last_name
- * @property string $email
- * @property string $password
- * @property string $type
+ * @property int $user_id
  * @property string $created_at
  * @property string $updated_at
  * @property Department $department
+ * @property User $user
  */
-class Teacher extends Authenticatable
+class Teacher extends Model
 {
-    use Notifiable;
-
-    protected $guard = 'teacher';
     /**
      * @var array
      */
-    protected $fillable = ['department_id', 'created_at', 'updated_at'];
+    protected $fillable = ['user_id', 'department_id', 'created_at', 'updated_at'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
@@ -34,5 +26,13 @@ class Teacher extends Authenticatable
     public function department()
     {
         return $this->belongsTo(Department::class);
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function user()
+    {
+        return $this->belongsTo(User::class);
     }
 }

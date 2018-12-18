@@ -3,8 +3,8 @@
 @section('title', 'Liste des etudiants')
 
 @section('page-title') 
-	<h1 class="page-title"><i class="fe fe-user"></i> Etudiants</h1> 
-	<a href="{{ route('student.create') }}" class="btn btn-outline-success ml-auto"><i class="fe fe-user-plus"></i> Nouveau etudiant</a>
+	<h1 class="page-title"><i class="fe fe-search"></i> Resultats de la recherche</h1> 
+	<a href="{{ route('student.index') }}" class="btn btn-outline-success ml-auto"><i class="fe fe-user"></i> Liste des etudiants</a>
 @endsection
 
 @section('content')
@@ -14,7 +14,7 @@
 <div class="card">
 
 	<div class="card-header">
-		<h3 class="card-title">Etudiants</h3>
+		<h3 class="card-title">Resultats de la recherche</h3>
 		<div class="card-options">
 			<form class="input-icon my-3 my-lg-0" action="{{ route('student.searche') }}" method="post">
 				@csrf
@@ -65,8 +65,6 @@
 			</tbody>
 		</table>
 	</div>
-	<div class="card-footer text-right ml-auto">
-			{!! $students->links() !!}
-	</div>
+	<div class="card-footer"></div>
 </div>
 @endsection

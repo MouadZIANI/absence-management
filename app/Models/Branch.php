@@ -22,7 +22,7 @@ class Branch extends Model
     /**
      * @var array
      */
-    protected $fillable = ['department_id', 'user_id', 'name', 'description', 'created_at', 'updated_at'];
+    protected $fillable = ['department_id', 'name', 'description', 'created_at', 'updated_at'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
