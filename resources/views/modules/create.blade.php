@@ -4,7 +4,7 @@
 
 @section('page-title')
 	<h1 class="page-title"><i class="fe fe-box"></i> Nouveau module</h1>
-	<a href="{{ route('module.index') }}" class="btn btn-success ml-auto"><i class="fe fe-box"></i> liste des modules</a>
+	<a href="{{ route('module.index') }}" class="btn btn-outline-success ml-auto"><i class="fe fe-box"></i> liste des modules</a>
 @endsection
 
 @section('content')
@@ -48,7 +48,7 @@
 					@endif
 				</div>
 				<br>
-				<h3 class="border-bottom-gray">Elements de module <button id="addItem" class="btn add-more btn-primary float-right" type="button"><i class="fa fa-plus"></i></button></h3>
+				<h3 class="border-bottom-gray">Elements de module <button id="addItem" class="btn add-more btn-primary float-right" type="button"><i class="fe fe-plus"></i></button></h3>
 				<div id="module_itemes">
 					<div class="row">
 						<div class="col-md-3">
@@ -71,7 +71,7 @@
 						</div>
 						<div class="col-md-1">
 							<div class="form-group">
-								<button style="margin-top: 27px;" type="button" class="deleteItem btn btn-danger btn-block"><i class="fa fa-trash-o"></i></button>
+								<button style="margin-top: 27px;" type="button" class="deleteItem btn btn-danger btn-block"><i class="fe fe-trash"></i></button>
 							</div>
 						</div>
 					</div>
@@ -107,7 +107,7 @@
 						</div>
 						<div class="col-md-1">
 							<div class="form-group">
-								<button style="margin-top: 27px;" type="button" class="deleteItem btn btn-danger btn-block"><i class="fa fa-trash-o"></i></button>
+								<button style="margin-top: 27px;" type="button" class="deleteItem btn btn-danger btn-block"><i class="fe fe-trash"></i></button>
 							</div>
 						</div>
 					</div>`

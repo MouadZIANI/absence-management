@@ -50,6 +50,14 @@ class Student extends Model
     }
 
     /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function absences()
+    {
+        return $this->hasMany(Absence::class);
+    }
+
+    /**
      * get full name of customer
      */
     public function getFullNameAttribute()

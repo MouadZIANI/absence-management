@@ -30,9 +30,14 @@ Auth::routes();
 Route::group(['middleware' => 'auth'], function() {
 	// Routes for students model
 	Route::get('/', 'StudentController@index');
-	Route::post('student/searche', 'StudentController@searche')->name('student.searche');
 	Route::resource('student', 'StudentController');
+	Route::post('student/searche', 'StudentController@searche')->name('student.searche');
 
+	// Routes for module model
 	Route::resource('module', 'ModuleController');
+
+	// Routes for absence model
+	Route::resource('absence', 'AbsenceController');
+	Route::post('absence/searche', 'AbsenceController@searche')->name('absence.searche');
 });
 

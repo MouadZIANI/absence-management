@@ -18,13 +18,21 @@ class Absence extends Model
     /**
      * @var array
      */
-    protected $fillable = ['type', 'justification', 'nb_hours', 'created_at', 'updated_at'];
+    protected $fillable = ['module_id', 'student_id', 'type', 'justification', 'nb_hours', 'absence_date','created_at', 'updated_at'];
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function absenceDetails()
+    public function module()
     {
-        return $this->hasMany(AbsenceDetail::class);
+        return $this->belongsTo(Module::class, 'module_id');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function student()
+    {
+        return $this->belongsTo(Student::class, 'student_id');
     }
 }
