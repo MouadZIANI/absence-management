@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Absence;
+use App\Models\Teacher;
+use App\Models\moduleTeacher;
 use Session;
 use Auth;
 
@@ -21,8 +23,11 @@ class AbsenceController extends Controller
         if($authUser->is_admin) {
             $absences = Absence::paginate(20);
         } else {
-            $teacher = Teacher::where('user_id', $authUser->id)->get();
             $absences = Absence::paginate(20);
+            // $teacher = Teacher::where('user_id', $authUser->id)->get();
+            // $module_user = 
+            // $abcences = Abcence::where('', )
+            // $absences = Absence::paginate(20);
         }
 
 

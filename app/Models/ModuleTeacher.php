@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -34,7 +34,7 @@ class ModuleTeacher extends Model
      */
     public function module()
     {
-        return $this->belongsTo(Module::class);
+        return $this->hasMany(Module::class);
     }
 
     /**
@@ -42,6 +42,6 @@ class ModuleTeacher extends Model
      */
     public function teacher()
     {
-        return $this->belongsTo(Teacher::class);
+        return $this->hasMany(Teacher::class);
     }
 }

@@ -35,4 +35,13 @@ class Teacher extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function moduleTeacher()
+    {
+        return $this->belongsTo(ModuleTeacher::class);
+    }
+
 }

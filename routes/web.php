@@ -16,10 +16,10 @@ Route::get('/bcrypt/{password}', function ($password) {
 	return bcrypt($password);
 });
 
-Route::get('/all-sessions', function () {
-	$lastUser = DB::select('select max(id) as last_id from users');
-	return dump($lastUser[0]->last_id+1);
-});
+// Route::post('/logout', function (Request $request) {
+// 	Auth::guard('web')->logout();
+//     return redirect('/');	
+// });
 
 Route::get('/test-assets', function () {
 	return view('students.index');

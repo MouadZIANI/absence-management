@@ -45,4 +45,12 @@ class Module extends Model
     {
         return $this->hasMany(ModuleItem::class);
     }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function moduleTeacher()
+    {
+        return $this->belongsTo(ModuleTeacher::class);
+    }
 }
