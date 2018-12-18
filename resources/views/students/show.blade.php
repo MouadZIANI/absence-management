@@ -50,14 +50,14 @@
 							<tr>
 								<td>{{ dateTimeToFrFormat($absence->absence_date) }}</td>
 								<td>{{ $absence->module->name }}</td>
-								<td>{{ $absence->absence->type }}</td>
-								<td>{{ $absence->absence->justification }}</td>
-								<td><span class="badge badge-default">{{ $absence->absence->nb_hours }} Heure</span></td>
+								<td>{{ $absence->type }}</td>
+								<td>{{ $absence->justification }}</td>
+								<td><span class="badge badge-default">{{ $absence->nb_hours }} Heure</span></td>
 								<td>
-									<a href="{{ route('student.edit', $student->id) }}" class="btn btn-success btn-sm">
+									<a href="{{ route('absence.edit', $absence->id) }}" class="btn btn-success btn-sm">
 										Editer
 									</a>
-									<form method="post" style="display: inline-block;" action="{{ route('student.destroy', $student->id) }}">
+									<form method="post" style="display: inline-block;" action="{{ route('absence.destroy', $absence->id) }}">
 										@csrf
 										@method('delete')
 										<button type="submit" class="btn btn-danger btn-sm">Supprimer</button>

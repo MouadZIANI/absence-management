@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateAbsenceDetailsTable extends Migration
+class AddAbsenceDateToAbsencesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,12 @@ class CreateAbsenceDetailsTable extends Migration
      */
     public function up()
     {
-        Schema::create('absence_details', function (Blueprint $table) {
+        Schema::table('absences', function (Blueprint $table) {
+            $table->dateTime('absence_date');
             $table->integer('module_id')->unsigned();
             $table->foreign('module_id')->references('id')->on('modules')->onDelete('cascade');
             $table->integer('student_id')->unsigned();
             $table->foreign('student_id')->references('id')->on('students')->onDelete('cascade');
-            $table->integer('absence_id')->unsigned();
-            $table->foreign('absence_id')->references('id')->on('absences')->onDelete('cascade');
-            $table->timestamps();
-            $table->primary(array('module_id', 'student_id', 'absence_id'));
         });
     }
 
@@ -32,6 +29,10 @@ class CreateAbsenceDetailsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('absence_details');
+        Schema::table('absences', function (Blueprint $table) {
+            $table->dropColumn('absence_date');
+            $table->dropColumn('module_id');
+            $table->dropColumn('student_id');
+        });
     }
 }

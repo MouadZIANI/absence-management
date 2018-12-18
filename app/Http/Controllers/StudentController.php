@@ -65,7 +65,7 @@ class StudentController extends Controller
      */
     public function show(Student $student)
     {
-        $absences = $student->absenceDetails()->get();
+        $absences = $student->absences()->get();
         return view('students.show', compact('student', 'absences'));
     }
 

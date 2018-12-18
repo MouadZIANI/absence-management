@@ -17,7 +17,8 @@ Route::get('/bcrypt/{password}', function ($password) {
 });
 
 Route::get('/all-sessions', function () {
-	return dump(Session::all());
+	$lastUser = DB::select('select max(id) as last_id from users');
+	return dump($lastUser[0]->last_id+1);
 });
 
 Route::get('/test-assets', function () {
@@ -39,5 +40,9 @@ Route::group(['middleware' => 'auth'], function() {
 	// Routes for absence model
 	Route::resource('absence', 'AbsenceController');
 	Route::post('absence/searche', 'AbsenceController@searche')->name('absence.searche');
+	
+	// Routes for teacher model
+	Route::resource('teacher', 'TeacherController');
+	Route::post('teacher/searche', 'TeacherController@searche')->name('teacher.searche');
 });
 

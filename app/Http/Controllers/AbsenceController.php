@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Absence;
+use Session;
+use Auth;
 
 class AbsenceController extends Controller
 {
@@ -14,8 +16,16 @@ class AbsenceController extends Controller
      */
     public function index()
     {        
-        $absences = Absence::first();
-        dd($absences->absenceDetails()->get());
+        $authUser = Auth::user();
+
+        if($authUser->is_admin) {
+            $absences = Absence::paginate(20);
+        } else {
+            $teacher = Teacher::where('user_id', $authUser->id)->get();
+            $absences = Absence::paginate(20);
+        }
+
+
         return view('absences.index', compact('absences'));
     }
 
@@ -118,12 +128,12 @@ class AbsenceController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Student $student)
+    public function destroy(Absence $absence)
     {
-        $student->delete();
-        Session::flash('success', 'L\'etudiant a été supprimé avec succès!');
+        $absence->delete();
+        Session::flash('success', 'L\'absence a été supprimé avec succès!');
         
-        return redirect()->route('student.index');
+        return redirect()->route('absence.index');
     }
 
     /**

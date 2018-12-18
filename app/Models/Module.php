@@ -33,9 +33,9 @@ class Module extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function absenceDetails()
+    public function absence()
     {
-        return $this->hasMany(AbsenceDetail::class);
+        return $this->hasMany(Absence::class);
     }
 
     /**

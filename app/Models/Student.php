@@ -44,14 +44,6 @@ class Student extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function absenceDetails()
-    {
-        return $this->hasMany(AbsenceDetail::class);
-    }
-
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
     public function absences()
     {
         return $this->hasMany(Absence::class);

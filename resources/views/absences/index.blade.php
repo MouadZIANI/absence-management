@@ -3,8 +3,8 @@
 @section('title', 'Liste des absences')
 
 @section('page-title') 
-	<h1 class="page-title"><i class="fe fe-user"></i> Absences</h1> 
-	<a href="{{ route('absence.create') }}" class="btn btn-outline-success ml-auto"><i class="fe fe-user-plus"></i> Nouveau absence</a>
+	<h1 class="page-title"><i class="fe fe-bell"></i> Absences</h1> 
+	<a href="{{ route('absence.create') }}" class="btn btn-outline-success ml-auto"><i class="fe fe-bell"></i> Nouveau absence</a>
 @endsection
 
 @section('content')
@@ -41,16 +41,17 @@
 			<tbody>
 				@foreach ($absences as $absence)
 					<tr>
+						<td><a href="{{ route('student.show', $absence->student->id) }}" class="btn btn-link">{{ $absence->student->fullName }}</a></td>
 						<td>{{ dateTimeToFrFormat($absence->absence_date) }}</td>
 						<td>{{ $absence->module->name }}</td>
-						<td>{{ $absence->absence->type }}</td>
-						<td>{{ $absence->absence->justification }}</td>
-						<td><span class="badge badge-default">{{ $absence->absence->nb_hours }} Heure</span></td>
+						<td>{{ $absence->type }}</td>
+						<td>{{ $absence->justification }}</td>
+						<td><span class="badge badge-default">{{ $absence->nb_hours }} Heure</span></td>
 						<td>
-							<a href="{{ route('student.edit', $student->id) }}" class="btn btn-success btn-sm">
+							<a href="{{ route('absence.edit', $absence->id) }}" class="btn btn-success btn-sm">
 								Editer
 							</a>
-							<form method="post" style="display: inline-block;" action="{{ route('student.destroy', $student->id) }}">
+							<form method="post" style="display: inline-block;" action="{{ route('absence.destroy', $absence->id) }}">
 								@csrf
 								@method('delete')
 								<button type="submit" class="btn btn-danger btn-sm">Supprimer</button>
@@ -60,47 +61,9 @@
 				@endforeach
 			</tbody>
 		</table>
-		<table class="table card-table table-hover table-outline table-vcenter table-striped table-bordered">
-			<thead>
-				<tr>
-					<th class="w-1">No.</th>
-					<th>Nom</th>
-					<th>Email</th>
-					<th>Tel</th>
-					<th>Filiere</th>
-					<th>Groupe</th>
-					<th class="text-center">Actions</th>
-				</tr>
-			</thead>
-			<tbody>
-				@foreach ($students as $student)
-					<tr>
-						<td class="w-1">{{ $student->id }}</td>
-						<td>{{ $student->fullName }}</td>
-						<td>{{ $student->email }}</td>
-						<td>{{ $student->tel }}</td>
-						<td>{{ $student->branch->name }}</td>
-						<td>{{ $student->group->name }}</td>
-						<td class="text-center">
-							<a href="{{ route('absence.edit', $student->id) }}" class="btn btn-outline-success btn-sm">
-								Editer
-							</a>
-							<form method="post" style="display: inline-block;" action="{{ route('absence.destroy', $student->id) }}">
-								@csrf
-								@method('delete')
-								<button type="submit" class="btn btn-outline-danger btn-sm">Supprimer</button>
-							</form>
-							<a href="{{ route('absence.show', $student->id) }}" class="btn btn-outline-info btn-sm">
-								Détails
-							</a>
-						</td>
-					</tr>
-				@endforeach
-			</tbody>
-		</table>
 	</div>
 	<div class="card-footer text-right ml-auto">
-			{!! $students->links() !!}
+			{!! $absences->links() !!}
 	</div>
 </div>
 @endsection

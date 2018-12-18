@@ -26,10 +26,10 @@
             </div>
           </li>
           <li class="nav-item">
-            <a href="javascript:void(0)" class="nav-link" data-toggle="dropdown"><i class="fe fe-box"></i> Departements</a>
+            <a href="javascript:void(0)" class="nav-link" data-toggle="dropdown"><i class="fe fe-user"></i> Enseignants</a>
             <div class="dropdown-menu dropdown-menu-arrow">
-              <a href="{{ route('student.create') }}" class="dropdown-item ">Nouveau departement</a>
-              <a href="{{ route('student.index') }}" class="dropdown-item ">Liste des departements</a>
+              <a href="{{ route('teacher.create') }}" class="dropdown-item ">Nouveau enseignants</a>
+              <a href="{{ route('teacher.index') }}" class="dropdown-item ">Liste des enseignantss</a>
             </div>
           </li>
           <li class="nav-item">
@@ -40,17 +40,10 @@
             </div>
           </li>
           <li class="nav-item">
-            <a href="javascript:void(0)" class="nav-link" data-toggle="dropdown"><i class="fe fe-box"></i> Groupes</a>
-            <div class="dropdown-menu dropdown-menu-arrow">
-              <a href="{{ route('student.create') }}" class="dropdown-item ">Nouveau groupe</a>
-              <a href="{{ route('student.index') }}" class="dropdown-item ">Liste des groupes</a>
-            </div>
-          </li>
-          <li class="nav-item">
             <a href="javascript:void(0)" class="nav-link" data-toggle="dropdown"><i class="fe fe-box"></i> Absences</a>
             <div class="dropdown-menu dropdown-menu-arrow">
-              <a href="{{ route('student.create') }}" class="dropdown-item ">Nouveau absence</a>
-              <a href="{{ route('student.index') }}" class="dropdown-item ">Liste des absences</a>
+              <a href="{{ route('absence.create') }}" class="dropdown-item ">Nouveau absence</a>
+              <a href="{{ route('absence.index') }}" class="dropdown-item ">Liste des absences</a>
             </div>
           </li>
         </ul>

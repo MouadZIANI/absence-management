@@ -19,14 +19,15 @@ class DatabaseSeeder extends Seeder
         	]);
         }
 
-		// Insert users 
+        // Insert users 
         for ($i=1; $i <= 20; $i++) { 
-        	DB::table('users')->insert([
-		        'name' => 'John Doe ' . $i,
-		        'email' => 'john' . $i . '@doe.com',
-		        'password' => '$2y$10$TKh8H1.PfQx37YgCzwiKb.KjNyWgaHb9cbcoQgdIVFlYg7B77UdFm', // secret
-		        'remember_token' => str_random(10),
-        	]);
+            DB::table('users')->insert([
+                'first_name' => 'John ' . $i,
+                'last_name' => 'Doe ' . $i,
+                'email' => 'john' . $i . '@doe.com',
+                'password' => '$2y$10$TKh8H1.PfQx37YgCzwiKb.KjNyWgaHb9cbcoQgdIVFlYg7B77UdFm', // secret
+                'remember_token' => str_random(10),
+            ]);
         }
 
         // Insert departement & branches
@@ -39,7 +40,6 @@ class DatabaseSeeder extends Seeder
 			for ($j=1; $j <= 3; $j++) { 
 	        	DB::table('branches')->insert([
 	        		'department_id' => $i, 
-	        		'user_id' => $i, 
 	        		'name' => 'Filière' . $i, 
         			'description' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.' 
 	        	]);
@@ -71,16 +71,30 @@ class DatabaseSeeder extends Seeder
                 DB::table('absences')->insert([
                     'type' => "Absence type $i", 
                     'justification' => "Lorem ipsum dolor sit amet. $i", 
-                    'nb_hours' => rand(1, 5)                
-                ]);
-
-                DB::table('absence_details')->insert([
+                    'nb_hours' => rand(1, 5),                
                     'module_id' => rand(1, 20), 
                     'student_id' => $j, 
-                    'absence_id' => $i,                
-                    'absence_date' => '2018-12-16 18:24:17',                
-                ]);                
+                    'absence_date' => '2018-0' . $i . '-16 18:24:17',                
+                ]); 
             }
+        }
+
+        // Insert teachers 
+        $lastUser = DB::select('select max(id) as last_id from users');
+        for ($i=$lastUser[0]->last_id + 1; $i <= $lastUser[0]->last_id + 20; $i++) { 
+            DB::table('users')->insert([
+                'first_name' => 'Teacher ' . $i,
+                'last_name' => 'Doe ' . $i,
+                'email' => 'Teacher' . $i . '@doe.com',
+                'is_admin' => false,
+                'password' => '$2y$10$TKh8H1.PfQx37YgCzwiKb.KjNyWgaHb9cbcoQgdIVFlYg7B77UdFm', // secret
+                'remember_token' => str_random(10),
+            ]);
+
+            DB::table('teachers')->insert([
+                'department_id' => rand(1, 20),
+                'user_id' => $i
+            ]);
         }
     }
 }
